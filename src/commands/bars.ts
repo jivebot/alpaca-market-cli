@@ -1,6 +1,7 @@
 import { Command, Flags } from "@oclif/core";
 import { AlpacaClient } from "@master-chief/alpaca";
 import { writeToStream, writeToPath } from "@fast-csv/format";
+import { DateTime } from "luxon";
 
 export default class Bars extends Command {
   static description = "Download bars";
@@ -53,8 +54,9 @@ export default class Bars extends Command {
       pageToken = resp.next_page_token;
 
       resp.bars.forEach((bar) => {
+        const timestamp = DateTime.fromJSDate(bar.t);
         bars.push({
-          timestamp: bar.t,
+          timestamp: timestamp.toISODate(),
           open: bar.o,
           high: bar.h,
           low: bar.l,
