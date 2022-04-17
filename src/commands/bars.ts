@@ -1,5 +1,6 @@
 import { Command, Flags } from "@oclif/core";
 import { AlpacaClient } from "@master-chief/alpaca";
+import { writeToStream, writeToPath } from "@fast-csv/format";
 
 export default class Bars extends Command {
   static description = "Download bars";
@@ -17,6 +18,10 @@ export default class Bars extends Command {
       char: "e",
       description: "End date / datetime",
     }),
+    output: Flags.string({
+      char: "o",
+      description: "Output file",
+    }),
   };
 
   async run(): Promise<void> {
@@ -33,6 +38,8 @@ export default class Bars extends Command {
 
     const startDate = flags.start ? new Date(flags.start) : new Date();
     const endDate = flags.end ? new Date(flags.end) : new Date();
+
+    const bars: Record<string, unknown>[] = [];
     let pageToken = "";
 
     while (pageToken != null) {
@@ -46,12 +53,26 @@ export default class Bars extends Command {
       pageToken = resp.next_page_token;
 
       resp.bars.forEach((bar) => {
-        console.log(bar.t);
-        console.log(`  o: ${bar.o}`);
-        console.log(`  h: ${bar.h}`);
-        console.log(`  l: ${bar.l}`);
-        console.log(`  c: ${bar.c}`);
-        console.log(`  v: ${bar.v}`);
+        bars.push({
+          timestamp: bar.t,
+          open: bar.o,
+          high: bar.h,
+          low: bar.l,
+          close: bar.c,
+          volume: bar.v,
+        });
+      });
+    }
+
+    if (flags.output) {
+      writeToPath(flags.output, bars, {
+        headers: true,
+        includeEndRowDelimiter: true,
+      });
+    } else {
+      writeToStream(process.stdout, bars, {
+        headers: true,
+        includeEndRowDelimiter: true,
       });
     }
   }
