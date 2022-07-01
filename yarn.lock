@@ -86,10 +86,10 @@
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
 
-"@master-chief/alpaca@^6.3.17":
-  version "6.3.17"
-  resolved "https://registry.yarnpkg.com/@master-chief/alpaca/-/alpaca-6.3.17.tgz#ab06120cd813cf408deb6dd54f3625087db1dd73"
-  integrity sha512-/cib3W1HImjT5iO3UMCbANwidoSM1/477fpxLIZpQasu7M1bxIYYRscsDOX4EQffXmx4UYsmgaWn0632mkzLgA==
+"@master-chief/alpaca@^6.3.20":
+  version "6.3.20"
+  resolved "https://registry.yarnpkg.com/@master-chief/alpaca/-/alpaca-6.3.20.tgz#d934fe0c72e10437b1fec1947a689bd8fa1a4cbc"
+  integrity sha512-Nc9SmvwtnwVxFOVdRpKta2rkppMi0Ivl7bgO6vCWMh2taykH7404gmfYlS3uL/gduPDbWloqJ3TQHFo4F1d1FQ==
   dependencies:
     "@master-chief/map" "^0.0.6"
     abort-controller "^3.0.0"
