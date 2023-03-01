@@ -21,7 +21,7 @@
     "@master-chief/alpaca": "^6.3.17",
     "@oclif/core": "^1",
     "@oclif/plugin-help": "^5",
-    "@oclif/plugin-plugins": "^2.0.1",
+    "@oclif/plugin-plugins": "^2.3.2",
     "dotenv": "^16.0.0",
     "luxon": "^2.3.2"
   },
